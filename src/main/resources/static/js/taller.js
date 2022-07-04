@@ -1,14 +1,13 @@
-$(document).ready(function (){
+$(document).ready(function () {
     listar();
 });
-
-function listar(){
-   $.ajax({
+function listar() {
+    $.ajax({
         url: "/taller/all",
         type: 'GET',
         success: function (x) {
             $("#table tbody tr").remove();
-            x.forEach((item,index,array)=>{
+            x.forEach((item, index, array) => {
                 $("#table").append(
                         "<tr>\n\
                             <td>" + (index + 1) + "</td>\n\
@@ -23,39 +22,37 @@ function listar(){
                                 <a href='#' onclick='eliminar(" + item.tallId + ")'><i class='fa-solid fa-trash-can red'></i></a>\n\
                             </td>\n\
                         </tr>");
-                
-            });
-    }
-   }); 
-}
 
+            });
+        }
+    });
+}
 function editar(id) {
     $.ajax({
         url: "/taller/" + id,
         type: 'GET',
         success: function (w) {
-            $("#editar_nombres").val(w.nombres);
-            $("#editar_apellidos").val(w.apellidos);
-            $("#edit_tallId").val(w.tallId),
-            $("#edit_edit_tema").val(w.tallTerm),
-            $("#edit_date").val(w.tallDate), 
-            $("#edit_time").val(w.tallTime), 
-            $("#edit_direccion").val(w.tallDireccion)
+            $("#edit_tallId").val(w.tallId);
+            $("#edit_tema").val(w.tallTerm);
+            $("#edit_date").val(w.tallDate);
+            $("#edit_time").val(w.tallTime);
+            $("#edit_direccion").val(w.tallDireccion);
         }
     });
     $("#editarModal").modal('show');
 }
-
 function eliminar(id) {
     bootbox.confirm({
-        message: "Realmente desea Eliminar?",
+        message: "¿Está seguro que desea eliminar el registro?",
+        closeButton: false,
+        title: "Eliminar",
         buttons: {
             confirm: {
-                label: 'SI',
-                className: 'btn-success'
+                label: 'Eliminar',
+                className: 'btn-primary'
             },
             cancel: {
-                label: 'NO',
+                label: 'Cancelar',
                 className: 'btn-danger'
             }
         },
@@ -65,31 +62,33 @@ function eliminar(id) {
                     url: "/taller/" + id,
                     type: 'DELETE',
                     success: function (w) {
-                        bootbox.alert({
-                            message: "Registro eliminado correctamente...!",
-                            callback: function () {
-                                console.log('This was logged in the callback!');
-                            }
+                        var dialog = bootbox.dialog({
+                            message: '<p class="text-center mb-0"><i class="fa fa-spin fa-spinner"></i> Registro Eliminado Correctamente.</p>',
+                            closeButton: false
                         });
+                        setTimeout(function () {
+                            dialog.modal('hide');
+                        }, 1500);
                         listar();
                     }
                 });
             } else {
-                bootbox.alert({
-                    message: "Registro no eliminado!",
-                    size: 'small'
+                var dialog = bootbox.dialog({
+                    message: '<p class="text-center mb-0"><i class="fa fa-spin fa-spinner"></i> Registro no Eliminado.</p>',
+                    closeButton: false
                 });
+                setTimeout(function () {
+                    dialog.modal('hide');
+                }, 1500);
             }
         }
     });
 }
-
 $("#guardar").click(function () {
     $.ajax({
         url: "/taller/save",
         type: 'POST',
         contentType: "application/json; charset=utf-8",
-        //data: JSON.stringify({'nombres': nombre, 'apellidos': apellido, 'estado':true}),
         data: JSON.stringify({
             tallTerm: $("#tema").val(),
             tallDate: $("#tallDate").val(), 
@@ -99,82 +98,49 @@ $("#guardar").click(function () {
         }),
         cache: false,
         success: function (w) {
-            bootbox.alert({
-                message: "Registro guardado correctamente...!",
-                callback: function () {
-                    console.log('This was logged in the callback!');
-                }
+            var dialog = bootbox.dialog({
+                message: '<p class="text-center mb-0"><i class="fa fa-spin fa-spinner"></i> Registro Guardado Correctamente.</p>',
+                closeButton: false
             });
-            /*bootbox.dialog({
-                message: '<p class="text-center mb-0"><i class="fa fa-spin fa-cog"></i> Registro guardado correctamente</p>',
-                closeButton: false,
-            });*/
-            // do something in the background
-            // dialog.modal('hide');
+            setTimeout(function () {
+                dialog.modal('hide');
+            }, 1500);
             limpiar();
             listar();
         }
     });
     $("#exampleModal").modal('hide');
 });
-
 function limpiar() {
     $("#tema").val(),
     $("#tallDate").val(), 
     $("#tallTime").val(), 
-    $("#tallDireccion").val()
+    $("#tallDireccion").val();
 }
 
 $("#modificar").click(function () {
-    var nombres = $("#editar_nombres").val();
-    var apellidos = $("#editar_apellidos").val();
-    var id = $("#editar_id").val();
-    bootbox.confirm({
-        message: "Realmente desea Modificar?",
-        buttons: {
-            confirm: {
-                label: 'SI',
-                className: 'btn-success'
-            },
-            cancel: {
-                label: 'NO',
-                className: 'btn-danger'
-            }
-        },
-        callback: function (result) {
-            if (result) {
-                $.ajax({
-                    url: "/taller/update",
-                    type: 'PUT',
-                    contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify({
-                        tallId: $("#edit_tallId").val(),
-                        tallTerm: $("#edit_tema").val(),
-                        tallDate: $("#edit_date").val(), 
-                        tallTime: $("#edit_time").val(), 
-                        tallDireccion: $("#edit_direccion").val()
-                    }),
-                    
-                    
-                    cache: false,
-                    success: function (w) {
-                        bootbox.alert({
-                            message: "Registro Modificado correctamente...!",
-                            /*callback: function () {
-                                console.log('This was logged in the callback!');
-                            }*/
-                        });
-                        limpiar();
-                        listar();
-                    }
-                });
-                $("#editarModal").modal('hide');
-            } else {
-                bootbox.alert({
-                    message: "Registro no Modificado!",
-                    size: 'small'
-                });
-            }
+    $.ajax({
+        url: "/taller/update",
+        type: 'PUT',
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify({
+            tallId: $("#edit_tallId").val(),
+            tallTerm: $("#edit_tema").val(),
+            tallDate: $("#edit_date").val(),
+            tallTime: $("#edit_time").val(),
+            tallDireccion: $("#edit_direccion").val()
+        }),
+        cache: false,
+        success: function (w) {
+            var dialog = bootbox.dialog({
+                message: '<p class="text-center mb-0"><i class="fa fa-spin fa-spinner"></i> Registro Modificado Correctamente.</p>',
+                closeButton: false
+            });
+            setTimeout(function () {
+                dialog.modal('hide');
+            }, 1500);
+            listar();
         }
     });
+    $("#editarModal").modal('hide');
 });

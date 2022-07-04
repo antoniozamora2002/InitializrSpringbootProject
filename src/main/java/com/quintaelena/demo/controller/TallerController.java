@@ -31,11 +31,11 @@ public class TallerController {
     private TallerService tallerService;
     
     @GetMapping("/all")
-    public List<Taller> findAll(){    
+    public List<Taller> findAll(){
         return tallerService.findAll();        
     }
     
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public ResponseEntity<Taller> findById(@PathVariable Long id){    
         Taller taller = tallerService.findBy(id);
         return ResponseEntity.ok(taller);    

@@ -46,4 +46,8 @@ public class Taller implements Serializable{
     @Column(name = "prog_id")
     private Long progId;
     
+    //@ManyToOne
+    //@JoinColumn(name = "prog_id")
+    //private Programa programa;
+    
 }

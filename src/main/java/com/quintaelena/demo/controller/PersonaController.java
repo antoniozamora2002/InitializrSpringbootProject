@@ -52,7 +52,6 @@ public class PersonaController {
 
     @PutMapping("/update")
     public Persona update(@RequestBody Persona persona) {
-        //Persona aut = new Persona(persona.getId(),persona.getNombres(),persona.getApellidos(), persona.getEstado());        
         return personaService.save(persona);
     }
 }

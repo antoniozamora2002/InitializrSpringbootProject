@@ -15,33 +15,22 @@ import lombok.Data;
 
 /**
  *
- * @author 51950
+ * @author User
  */
 @Data
 @Entity
-@Table(name = "persona")
-public class Persona implements Serializable {
-
-    @Id
-    @Column(name = "pers_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long persId;
-
-    @Column(name = "pers_ap_paterno")
-    private String persApPaterno;
-
-    @Column(name = "pers_ap_materno") 
-    private String persApMaterno; 
-
-    @Column(name = "pers_nombres")
-    private String persNombres;
-
-    @Column(name = "pers_dni")
-    private String persDni;
+@Table(name="usuarios")
+public class User implements Serializable{
     
-    @Column(name = "pers_telefono")
-    private String persTelefono;
-
-    @Column(name = "pers_estado")
-    private String persEstado;
+    @Id
+    @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long userID;
+    
+    @Column(name ="user_mail")
+    private String userMail;
+    
+    @Column( name = "user_pass")
+    private String userCodu;    
+    
 }

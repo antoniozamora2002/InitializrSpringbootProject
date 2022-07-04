@@ -37,7 +37,7 @@
             <!-- MODAL Guardar-->          
 
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-md">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Nueva Persona</h5>
@@ -45,31 +45,41 @@
                         </div>
                         <div class="modal-body">
                             <form>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Nombres:</label>
-                                    <input type="text" class="form-control" id="nombres">
+                                <div class="row form-group mb-3">
+                                    <label class="col-md-3 col-form-label">Nombres</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" id="nombres" placeholder="Nombres">
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Ap. Paterno:</label>
-                                    <input type="text" class="form-control" id="apPaterno">
+                                <div class="row form-group mb-3">
+                                    <label class="col-md-3 col-form-label">Ap. Paterno</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" id="apPaterno" placeholder="Ap. Paterno">
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Ap. Materno:</label>
-                                    <input type="text" class="form-control" id="apMaterno">
+                                <div class="row form-group mb-3">
+                                    <label class="col-md-3 col-form-label">Ap. Materno</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" id="apMaterno" placeholder="Ap. Materno">
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">DNI:</label>
-                                    <input type="text" class="form-control" id="dni">
+                                <div class="row form-group mb-3">
+                                    <label class="col-md-3 col-form-label">DNI</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" id="dni" placeholder="DNI">
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Teléfono:</label>
-                                    <input type="text" class="form-control" id="telefono">
+                                <div class="row form-group mb-3">
+                                    <label class="col-md-3 col-form-label">Teléfono</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" id="telefono" placeholder="Teléfono">
+                                    </div>
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             <button type="button" class="btn btn-primary" id="guardar">Guardar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         </div>
                     </div>
                 </div>
@@ -84,32 +94,42 @@
                         </div>
                         <div class="modal-body">
                             <form>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Nombres:</label>
-                                    <input type="text" class="form-control" id="edit_nombres">
+                                <div class="row form-group mb-3">
+                                    <label class="col-md-3 col-form-label">Nombres</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" id="edit_nombres" placeholder="Nombres">
                                     <input type="hidden" id="edit_persId" value="0">
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Ap. Paterno:</label>
-                                    <input type="text" class="form-control" id="edit_apPaterno">
+                                <div class="row form-group mb-3">
+                                    <label class="col-md-3 col-form-label">Ap. Paterno</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" id="edit_apPaterno" placeholder="Ap. Paterno">
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Ap. Materno:</label>
-                                    <input type="text" class="form-control" id="edit_apMaterno">
+                                <div class="row form-group mb-3">
+                                    <label class="col-md-3 col-form-label">Ap. Materno</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" id="edit_apMaterno" placeholder="Ap. Materno">
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">DNI:</label>
-                                    <input type="text" class="form-control" id="edit_dni">
+                                <div class="row form-group mb-3">
+                                    <label class="col-md-3 col-form-label">DNI</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" id="edit_dni" placeholder="DNI">
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Teléfono:</label>
-                                    <input type="text" class="form-control" id="edit_telefono">
+                                <div class="row form-group mb-3">
+                                    <label class="col-md-3 col-form-label">Teléfono</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" id="edit_telefono" placeholder="Teléfono">
+                                    </div>
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             <button type="button" class="btn btn-primary" id="modificar">Guardar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         </div>
                     </div>
                 </div>
