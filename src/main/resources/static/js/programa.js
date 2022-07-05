@@ -3,7 +3,7 @@ $(document).ready(function () {
 });
 function listar() {
     $.ajax({
-        url: "/taller/all",
+        url: "/programa/all",
         type: 'GET',
         success: function (x) {
             $("#table tbody tr").remove();
@@ -11,16 +11,13 @@ function listar() {
                 $("#table").append(
                         "<tr>\n\
                             <td>" + (index + 1) + "</td>\n\
-                            <td>" + item.tallTerm + "</td>\n\
-                            <td>" + item.programa.proName + "</td>\n\
-                            <td >" + item.tallDate + "</td>\n\
-                            <td>" + item.tallTime + "</td>\n\
-                            <td>" + item.tallDireccion + "</td>\n\
+                            <td>" + item.proName +"</td>\n\
+                            <td>" + item.proDescription + "</td>\n\
                             <td style='text-align: center'>\n\
-                                <a href='#' onclick='editar("+ item.tallId + ")'><i class='fa-solid fa-pen-to-square yelow'></i></a>\n\
+                                <a href='#' onclick='editar(" + item.proId + ")'><i class='fa-solid fa-pen-to-square yelow'></i></a>\n\
                             </td>\n\
                             <td style='text-align: center'>\n\
-                                <a href='#' onclick='eliminar(" + item.tallId + ")'><i class='fa-solid fa-trash-can red'></i></a>\n\
+                                <a href='#' onclick='eliminar(" + item.proId + ")'><i class='fa-solid fa-trash-can red'></i></a>\n\
                             </td>\n\
                         </tr>");
 
@@ -29,41 +26,19 @@ function listar() {
     });
 }
 
-function listarPrograma(){
-    
-    $.ajax({
-        
-        url: "/programa/all",
-        type: 'GET',
-        success: function(x){            
-            $("#tipoPro option").remove();
-            $("#tipoPro").append("<option>Seleccione</option>");
-            x.forEach((item, index, array) => {                
-                $("#tipoPro").append("<option value="+item.proId+">"+item.proName+"</option>");                
-            });            
-        }        
-    });
-    
-}
-
-$("#nuevo").click(function () {
-    listarPrograma();
-});
-
 function editar(id) {
     $.ajax({
-        url: "/taller/" + id,
+        url: "/programa/" + id,
         type: 'GET',
         success: function (w) {
-            $("#edit_tallId").val(w.tallId);
-            $("#edit_tema").val(w.tallTerm);
-            $("#edit_date").val(w.tallDate);
-            $("#edit_time").val(w.tallTime);
-            $("#edit_direccion").val(w.tallDireccion);
+            $("#edit_proId").val(w.proId);
+            $("#edit_nombre").val(w.proName);
+            $("#edit_description").val(w.proDescription);
         }
     });
     $("#editarModal").modal('show');
 }
+
 function eliminar(id) {
     bootbox.confirm({
         message: "¿Está seguro que desea eliminar el registro?",
@@ -82,7 +57,7 @@ function eliminar(id) {
         callback: function (result) {
             if (result) {
                 $.ajax({
-                    url: "/taller/" + id,
+                    url: "/programa/" + id,
                     type: 'DELETE',
                     success: function (w) {
                         var dialog = bootbox.dialog({
@@ -107,20 +82,15 @@ function eliminar(id) {
         }
     });
 }
+
 $("#guardar").click(function () {
     $.ajax({
-        url: "/taller/save",
+        url: "/programa/save",
         type: 'POST',
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify({
-            tallTerm: $("#tema").val(),
-            tallDate: $("#tallDate").val(), 
-            tallTime: $("#tallTime").val(), 
-            tallDireccion: $("#tallDireccion").val(),
-            tallEstado:true,
-            programa:{
-                proId:$("#tipoPro").val()
-            }
+            proName: $("#proNombre").val(),
+            proDescription: $("#proDescripcion").val()
         }),
         cache: false,
         success: function (w) {
@@ -137,24 +107,21 @@ $("#guardar").click(function () {
     });
     $("#exampleModal").modal('hide');
 });
+
 function limpiar() {
-    $("#tema").val(),
-    $("#tallDate").val(), 
-    $("#tallTime").val(), 
-    $("#tallDireccion").val();
+    $("#proNombre").val(),
+    $("#proDescripcion").val();
 }
 
 $("#modificar").click(function () {
     $.ajax({
-        url: "/taller/update",
+        url: "/programa/update",
         type: 'PUT',
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify({
-            tallId: $("#edit_tallId").val(),
-            tallTerm: $("#edit_tema").val(),
-            tallDate: $("#edit_date").val(),
-            tallTime: $("#edit_time").val(),
-            tallDireccion: $("#edit_direccion").val()
+            proId: $("#edit_proId").val(),
+            proName: $("#edit_nombre").val(),
+            proDescription: $("#edit_description").val()
         }),
         cache: false,
         success: function (w) {

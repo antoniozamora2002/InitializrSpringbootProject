@@ -28,4 +28,17 @@ public class MenuController {
         model.addAttribute("mensaje", "Talleres");
         return "taller/taller";
     }
+    
+    @GetMapping("/programa")
+    public String indexPrograma(Model model){
+        model.addAttribute("mensaje", "Programas");
+        return "programa/programa";
+    }
+    
+    @GetMapping("/tallerPersona")
+    public String indexAgregar(Model model){
+        model.addAttribute("mensaje", "TallerPersona");
+        return "tallerPersona/tallerPersona";
+    }
+    
 }

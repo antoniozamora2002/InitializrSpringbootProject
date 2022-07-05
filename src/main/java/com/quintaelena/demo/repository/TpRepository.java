@@ -4,17 +4,16 @@
  */
 package com.quintaelena.demo.repository;
 
-import com.quintaelena.demo.entity.Programa;
-import com.quintaelena.demo.entity.Taller;
-import java.util.List;
+import com.quintaelena.demo.entity.TallerPersona;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author User
  */
-public interface TallerRepository extends CrudRepository<Taller, Long>{
-    
-    List<Programa> findByprograma(Long proId);
+
+@Repository
+public interface TpRepository extends CrudRepository<TallerPersona, Long>{
     
 }

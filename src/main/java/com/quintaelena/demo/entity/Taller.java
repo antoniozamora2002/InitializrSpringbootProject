@@ -4,14 +4,23 @@
  */
 package com.quintaelena.demo.entity;
 
+import com.sun.istack.NotNull;
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.print.attribute.standard.MediaSize;
 import lombok.Data;
+import org.springframework.boot.autoconfigure.batch.BatchDataSource;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -31,8 +40,11 @@ public class Taller implements Serializable{
     @Column(name = "tall_term")
     private String tallTerm;
 
+    /*@Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd-MM-yyyy")*/
     @Column(name = "tall_date")
-    private String tallDate;    //fecha del taller
+    @NotNull
+    private String/*Date*/ tallDate;    //fecha del taller
     
     @Column(name = "tall_time")
     private String tallTime;    //hora del taller
@@ -42,12 +54,9 @@ public class Taller implements Serializable{
     
     @Column(name = "tall_estado")
     private String tallEstado;    //Estado del taller
-    
-    @Column(name = "prog_id")
-    private Long progId;
-    
-    //@ManyToOne
-    //@JoinColumn(name = "prog_id")
-    //private Programa programa;
+
+    @ManyToOne
+    @JoinColumn(name = "prog_id")
+    private Programa programa;
     
 }
