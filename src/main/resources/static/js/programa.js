@@ -109,8 +109,8 @@ $("#guardar").click(function () {
 });
 
 function limpiar() {
-    $("#proNombre").val(),
-    $("#proDescripcion").val();
+    $("#proNombre").val(''),
+    $("#proDescripcion").val('');
 }
 
 $("#modificar").click(function () {

@@ -8,11 +8,13 @@ import com.quintaelena.demo.entity.Programa;
 import com.quintaelena.demo.entity.Taller;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author User
  */
+@Repository
 public interface TallerRepository extends CrudRepository<Taller, Long>{
     
     List<Programa> findByprograma(Long proId);

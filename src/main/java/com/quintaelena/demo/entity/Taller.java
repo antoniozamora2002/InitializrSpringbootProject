@@ -40,11 +40,15 @@ public class Taller implements Serializable{
     @Column(name = "tall_term")
     private String tallTerm;
 
+    
+    @Column(name = "tall_date")
+    private String tallDate;
+    
     /*@Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "dd-MM-yyyy")*/
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "tall_date")
     @NotNull
-    private String/*Date*/ tallDate;    //fecha del taller
+    private Date tallDate;    //fecha del taller*/
     
     @Column(name = "tall_time")
     private String tallTime;    //hora del taller

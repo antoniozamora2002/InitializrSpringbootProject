@@ -9,10 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- *
- * @author 51950
- */
+
 @Controller
 @RequestMapping("/menu")
 public class MenuController {
@@ -35,10 +32,5 @@ public class MenuController {
         return "programa/programa";
     }
     
-    @GetMapping("/tallerPersona")
-    public String indexAgregar(Model model){
-        model.addAttribute("mensaje", "TallerPersona");
-        return "tallerPersona/tallerPersona";
-    }
     
 }

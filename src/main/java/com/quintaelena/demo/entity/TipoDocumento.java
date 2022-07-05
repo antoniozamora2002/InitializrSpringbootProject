@@ -4,43 +4,32 @@
  */
 package com.quintaelena.demo.entity;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
 
 /**
  *
- * @author User
+ * @author 51950
  */
-
 @Data
 @Entity
-@Table(name = "taller_persona")
-public class TallerPersona {
-    
+@Table(name = "tipo_documento")
+public class TipoDocumento implements Serializable {
+
     @Id
-    @Column(name = "tp_id")
+    @Column(name = "tido_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long TPId;
-    
-    @Column(name = "tp_carrera")
-    private String TPcarrera;
-    
-    @Column(name = "tp_ciclo")
-    private String TPciclo;
-    
-    @ManyToOne
-    @JoinColumn(name = "tall_id")
-    private Taller taller;
-    
-    @ManyToOne
-    @JoinColumn(name = "pers_id")
-    private Persona persona;
-    
+    private Long tidoId;
+
+    @Column(name = "tipo_nombre")
+    private String tidoNombre;
+
+    @Column(name = "tipo_descripcion")
+    private String tipoDescripcion;
 }

@@ -29,7 +29,7 @@ public class TallerServiceImpl implements TallerService{
     }
 
     @Override
-    public Taller findBy(Long id) {
+    public Taller findById(Long id) {
         return employeeRepository.findById(id).orElse(null);
     }
 

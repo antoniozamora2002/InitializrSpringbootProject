@@ -31,8 +31,7 @@ function listar() {
 
 function listarPrograma(){
     
-    $.ajax({
-        
+    $.ajax({        
         url: "/programa/all",
         type: 'GET',
         success: function(x){            
@@ -114,12 +113,12 @@ $("#guardar").click(function () {
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify({
             tallTerm: $("#tema").val(),
-            tallDate: $("#tallDate").val(), 
-            tallTime: $("#tallTime").val(), 
+            tallDate: $("#tallDate").val(),
+            tallTime: $("#tallTime").val(),
             tallDireccion: $("#tallDireccion").val(),
-            tallEstado:true,
-            programa:{
-                proId:$("#tipoPro").val()
+            tallEstado: true,
+            programa: {
+                proId: $("#tipoPro").val()
             }
         }),
         cache: false,
@@ -138,10 +137,10 @@ $("#guardar").click(function () {
     $("#exampleModal").modal('hide');
 });
 function limpiar() {
-    $("#tema").val(),
-    $("#tallDate").val(), 
-    $("#tallTime").val(), 
-    $("#tallDireccion").val();
+    $("#tema").val(''),
+    $("#tallDate").val(''), 
+    $("#tallTime").val(''), 
+    $("#tallDireccion").val('');
 }
 
 $("#modificar").click(function () {
@@ -154,7 +153,10 @@ $("#modificar").click(function () {
             tallTerm: $("#edit_tema").val(),
             tallDate: $("#edit_date").val(),
             tallTime: $("#edit_time").val(),
-            tallDireccion: $("#edit_direccion").val()
+            tallDireccion: $("#edit_direccion").val(),
+            programa:{
+                proId:$("edit_tipoPro").val()
+            }
         }),
         cache: false,
         success: function (w) {

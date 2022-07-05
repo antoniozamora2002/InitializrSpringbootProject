@@ -11,7 +11,7 @@ public interface TallerService {
     
     public List<Taller> findAll();
     
-    public Taller findBy(Long id);
+    public Taller findById(Long id);
     
     public Taller save(Taller employee);
     

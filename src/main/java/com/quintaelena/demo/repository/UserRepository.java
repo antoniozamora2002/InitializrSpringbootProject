@@ -6,11 +6,13 @@ package com.quintaelena.demo.repository;
 
 import com.quintaelena.demo.entity.User;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author User
  */
+@Repository
 public interface UserRepository extends CrudRepository<User, Long>{
     
 }

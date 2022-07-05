@@ -4,23 +4,22 @@
  */
 package com.quintaelena.demo.service;
 
-import com.quintaelena.demo.entity.TallerPersona;
+import com.quintaelena.demo.entity.TipoDocumento;
 import java.util.List;
 
 /**
  *
- * @author User
+ * @author 51950
  */
-public interface TpService {
-    
-    public List<TallerPersona> findAll();
-    
-    public TallerPersona findBy(Long id);
-    
-    public TallerPersona save(TallerPersona employee);
-    
-    public void delete(TallerPersona employee);
-    
+public interface TipoDocumentoService {
+
+    public List<TipoDocumento> findAll();
+
+    public TipoDocumento findById(Long id);
+
+    public TipoDocumento save(TipoDocumento tipoDocumento);
+
+    public void delete(TipoDocumento tipoDocumento);
+
     public void deleteById(Long id);
-    
 }

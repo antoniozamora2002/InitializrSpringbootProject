@@ -4,8 +4,8 @@
  */
 package com.quintaelena.demo.controller;
 
-import com.quintaelena.demo.entity.Persona;
-import com.quintaelena.demo.service.PersonaService;
+import com.quintaelena.demo.entity.TipoDocumento;
+import com.quintaelena.demo.service.TipoDocumentoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,36 +18,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ *
+ * @author 51950
+ */
 @RestController
-@RequestMapping("/persona")
-public class PersonaController {
+@RequestMapping("/tipoDocumento")
+public class TipoDocumentoController {
 
     @Autowired
-    private PersonaService personaService;
+    private TipoDocumentoService tipoDocumentoService;
 
     @GetMapping("/all")
-    public List<Persona> findAll() {
-        return personaService.findAll();
+    public List<TipoDocumento> findAll() {
+        return tipoDocumentoService.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Persona> findById(@PathVariable Long id) {
-        Persona persona = personaService.findById(id);
-        return ResponseEntity.ok(persona);
+    public ResponseEntity<TipoDocumento> findById(@PathVariable Long id) {
+        TipoDocumento tipoDocumento = tipoDocumentoService.findById(id);
+        return ResponseEntity.ok(tipoDocumento);
     }
 
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Long id) {
-        personaService.deleteById(id);
+        tipoDocumentoService.deleteById(id);
     }
 
     @PostMapping("/save")
-    public Persona save(@RequestBody Persona persona) {
-        return personaService.save(persona);
+    public TipoDocumento save(@RequestBody TipoDocumento tipoDocumento) {
+        return tipoDocumentoService.save(tipoDocumento);
     }
 
     @PutMapping("/update")
-    public Persona update(@RequestBody Persona persona) {
-        return personaService.save(persona);
+    public TipoDocumento update(@RequestBody TipoDocumento tipoDocumento) {
+        //TipoDocumento aut = new TipoDocumento(tipoDocumento.getId(),tipoDocumento.getNombres(),tipoDocumento.getApellidos(), tipoDocumento.getEstado());        
+        return tipoDocumentoService.save(tipoDocumento);
     }
 }

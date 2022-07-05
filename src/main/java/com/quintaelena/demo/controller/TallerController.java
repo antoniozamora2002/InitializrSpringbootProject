@@ -37,7 +37,7 @@ public class TallerController {
     
     @GetMapping("/{id}")
     public ResponseEntity<Taller> findById(@PathVariable Long id){    
-        Taller taller = tallerService.findBy(id);
+        Taller taller = tallerService.findById(id);
         return ResponseEntity.ok(taller);    
     }
     
